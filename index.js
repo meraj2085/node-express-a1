@@ -13,8 +13,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+app.get("/", (req, res) => {res.sendFile(__dirname + "/views/demo.html")});
 app.use("/api/v1/demo", demoRouter);
-
 
 // Start server
 app.listen(port, () => {
