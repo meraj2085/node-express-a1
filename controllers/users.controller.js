@@ -33,7 +33,7 @@ module.exports.newUser = async (req, res) => {
      }
 }
 
-
+// Update a user
 module.exports.updateUser = async (req, res) => {
      try {
           const data = USERS;
@@ -46,6 +46,20 @@ module.exports.updateUser = async (req, res) => {
           if (address) user.address = address;
           if (photoUrl) user.photoUrl = photoUrl;
           res.status(200).json({ success: true, message: `Updated demo user ${id}`, data: user });
+     } catch (error) {
+          res.status(404).json({ success: false, message: error.message });
+     }
+}
+
+// Delete a user
+module.exports.deleteUser = async (req, res) => {
+     try {
+          const data = USERS;
+          const { id } = req.params;
+          const user = data.find((user) => user.id == id);
+          const index = data.indexOf(user);
+          data.splice(index, 1);
+          res.status(200).json({ success: true, message: `Deleted demo user ${id}`, data: user });
      } catch (error) {
           res.status(404).json({ success: false, message: error.message });
      }

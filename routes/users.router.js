@@ -11,6 +11,7 @@ router.get("/random", usersController.randomUser);
 router.get("/all", usersController.allUsers);
 router.post("/save", usersController.newUser);
 router.patch("/update/:id", usersController.updateUser);
+router.delete("/delete/:id", usersController.deleteUser);
 
 
 module.exports = router;
