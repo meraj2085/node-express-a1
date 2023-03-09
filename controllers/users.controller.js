@@ -8,4 +8,13 @@ module.exports.randomUser = async (req, res) => {
      } catch (error) {
           res.status(404).json({ success: false, message: error.message });
      }
-   };
+};
+
+module.exports.allUsers = async (req, res) => {
+     try {
+          const data = USERS;
+          res.status(200).json({ success: true, message: "All demo users", data: data });
+     } catch (error) {
+          res.status(404).json({ success: false, message: error.message });
+     }
+};

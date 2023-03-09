@@ -6,14 +6,14 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Import routes
-const randomUser = require("./routes/users.router");
+const userRoutes = require("./routes/users.router");
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/v1/user", randomUser);
+app.use("/api/v1/user", userRoutes);
 
 // Start server
 app.listen(port, () => {
