@@ -32,3 +32,21 @@ module.exports.newUser = async (req, res) => {
           res.status(404).json({ success: false, message: error.message });
      }
 }
+
+
+module.exports.updateUser = async (req, res) => {
+     try {
+          const data = USERS;
+          const { id } = req.params;
+          const { name, gender, contact, address, photoUrl } = req.body;
+          const user = data.find((user) => user.id == id);
+          if (name) user.name = name;
+          if (gender) user.email = gender;
+          if (contact) user.contact = contact;
+          if (address) user.address = address;
+          if (photoUrl) user.photoUrl = photoUrl;
+          res.status(200).json({ success: true, message: `Updated demo user ${id}`, data: user });
+     } catch (error) {
+          res.status(404).json({ success: false, message: error.message });
+     }
+}
