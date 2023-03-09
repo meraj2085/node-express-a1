@@ -9,6 +9,7 @@ const usersController = require("../controllers/users.controller");
 // Routes
 router.get("/random", usersController.randomUser);
 router.get("/all", usersController.allUsers);
+router.post("/save", usersController.newUser);
 
 
 module.exports = router;
