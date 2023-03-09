@@ -16,7 +16,7 @@ https://node-express-a1.vercel.app/
 
 Endpoints
 - api/v1/user/random - GET
-- api/v1/user/all - GET
+- v1/user/all?limit=5&page=1 - GET
 - api/v1/user/save - POST
 - api/v1/user/update/:id - PATCH
 - api/v1/user/delete/:id - DELETE

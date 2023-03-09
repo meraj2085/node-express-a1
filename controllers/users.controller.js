@@ -14,8 +14,16 @@ module.exports.randomUser = async (req, res) => {
 // Get all users
 module.exports.allUsers = async (req, res) => {
      try {
+          const { limit, page } = req.query;
           const data = USERS;
-          res.status(200).json({ success: true, message: "All demo users", data: data });
+          if (limit && page) {
+               const startIndex = (page - 1) * limit;
+               const endIndex = page * limit;
+               const users = data.slice(startIndex, endIndex);
+               res.status(200).json({ success: true, message: "All demo users", data: users });
+          } else {
+               res.status(200).json({ success: true, message: "All demo users", data: data });
+          }
      } catch (error) {
           res.status(404).json({ success: false, message: error.message });
      }
